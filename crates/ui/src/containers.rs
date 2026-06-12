@@ -94,15 +94,25 @@ impl ParentElement for Card {
 impl RenderOnce for Card {
     fn render(self, _window: &mut Window, cx: &mut App) -> impl IntoElement {
         let tokens = cx.theme().tokens;
+        // The scrap sits a touch heavier than the pill: the soft shadow at
+        // 4/3 strength (still nothing in Dusk, whose token is transparent)
+        // and an ink-based hairline instead of the surface hairline.
+        let shadow = soft_shadow(&tokens)
+            .into_iter()
+            .map(|mut layer| {
+                layer.color = layer.color.alpha((layer.color.a * 4.0 / 3.0).min(1.0));
+                layer
+            })
+            .collect::<Vec<_>>();
         div()
             .flex()
             .flex_col()
             .p(px(12.))
             .bg(tokens.surface_lifted)
             .border_1()
-            .border_color(tokens.hairline)
+            .border_color(tokens.ink.alpha(0.10))
             .rounded(px(layout::RADIUS_MD))
-            .shadow(soft_shadow(&tokens))
+            .shadow(shadow)
             .children(self.children)
     }
 }

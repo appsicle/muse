@@ -419,14 +419,31 @@ pub(crate) fn render_card(
     )
 }
 
-/// The card itself: a quiet lowercase tone label, an optional dismiss, and
-/// the body revealing word by word.
+/// The card itself: a taped scrap — a tape strip across the top edge, a
+/// typewriter tone label in accent, an optional dismiss, and the body
+/// revealing word by word.
 fn card_content(
     tone: AnnotationTone,
     body: SharedString,
     dismiss: Option<impl IntoElement>,
     tokens: &Tokens,
 ) -> impl IntoElement {
+    // The tape strip: a short translucent accent band riding the card's
+    // top edge, centered, like a scrap taped into the margin.
+    let tape = div()
+        .flex()
+        .flex_none()
+        .justify_center()
+        .mt(px(-10.0))
+        .mb(px(2.0))
+        .child(
+            div()
+                .w(px(46.0))
+                .h(px(8.0))
+                .rounded(px(2.0))
+                .bg(tokens.accent.alpha(0.18)),
+        );
+
     let header = div()
         .flex()
         .flex_row()
@@ -436,8 +453,8 @@ fn card_content(
         .child(
             div()
                 .text_size(px(metrics::UI_SMALL))
-                .font_family(fonts::FONT_UI)
-                .text_color(tokens.ink_tertiary)
+                .font_family(fonts::FONT_MONO)
+                .text_color(tokens.accent)
                 .child(tone.label()),
         )
         .children(dismiss);
@@ -456,5 +473,5 @@ fn card_content(
             },
         );
 
-    card().child(header).child(reveal)
+    card().child(tape).child(header).child(reveal)
 }

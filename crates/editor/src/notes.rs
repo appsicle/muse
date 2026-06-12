@@ -54,14 +54,14 @@ pub enum AnnotationTone {
 }
 
 impl AnnotationTone {
-    /// The quiet lowercase label on the bloomed card.
+    /// The typewriter-stamp label on the bloomed card.
     pub(crate) fn label(self) -> &'static str {
         match self {
-            AnnotationTone::Insight => "a thought",
-            AnnotationTone::Question => "a question",
-            AnnotationTone::Encouragement => "encouragement",
-            AnnotationTone::Correction => "a catch",
-            AnnotationTone::Reference => "worth a look",
+            AnnotationTone::Insight => "A THOUGHT",
+            AnnotationTone::Question => "A QUESTION",
+            AnnotationTone::Encouragement => "ENCOURAGEMENT",
+            AnnotationTone::Correction => "A CATCH",
+            AnnotationTone::Reference => "WORTH A LOOK",
         }
     }
 }

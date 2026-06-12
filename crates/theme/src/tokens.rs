@@ -59,7 +59,7 @@ pub struct Tokens {
     pub ink_tertiary: Hsla,
     /// 1px borders and dividers.
     pub hairline: Hsla,
-    /// The one accent — rose clay. Caret, primary actions, selection base.
+    /// The one accent — stamp crimson. Caret, primary actions, selection base.
     pub accent: Hsla,
     /// Text-selection highlight (accent with baked-in alpha).
     pub selection: Hsla,
@@ -74,7 +74,7 @@ pub struct Tokens {
 
 impl Tokens {
     /// The four curated swatches for range-level text color, in display
-    /// order: default ink, rose accent, lavender muse, moss green.
+    /// order: default ink, crimson accent, lavender muse, moss green.
     #[must_use]
     pub fn ink_palette(&self) -> [Hsla; 4] {
         [self.ink, self.accent, self.muse, self.moss]
@@ -97,7 +97,7 @@ fn hxa(hex: u32, alpha: f32) -> Hsla {
 /// muse ink, which is now derived from the accent (one hue story per theme).
 #[must_use]
 pub fn paper() -> Tokens {
-    let accent = hx(0xB86450);
+    let accent = hx(0xD7263D);
     let bg = hx(0xFAF8F5);
     let ink = hx(0x26221C);
     Tokens {
@@ -119,7 +119,7 @@ pub fn paper() -> Tokens {
 /// The Dusk (dark) palette, exactly as specified in PLAN §8.
 #[must_use]
 pub fn dusk() -> Tokens {
-    let accent = hx(0xE0907C);
+    let accent = hx(0xE4485C);
     let bg = hx(0x171512);
     let ink = hx(0xEDE9E2);
     Tokens {
@@ -222,13 +222,13 @@ mod tests {
         let p = paper();
         assert!(close(p.bg, hx(0xFAF8F5)));
         assert!(close(p.ink, hx(0x26221C)));
-        assert!(close(p.accent, hx(0xB86450)));
+        assert!(close(p.accent, hx(0xD7263D)));
         assert!((p.selection.a - 0.18).abs() < 1e-4);
 
         let d = dusk();
         assert!(close(d.bg, hx(0x171512)));
         assert!(close(d.ink, hx(0xEDE9E2)));
-        assert!(close(d.accent, hx(0xE0907C)));
+        assert!(close(d.accent, hx(0xE4485C)));
         assert!((d.selection.a - 0.22).abs() < 1e-4);
         assert!((d.shadow.a).abs() < 1e-4);
     }

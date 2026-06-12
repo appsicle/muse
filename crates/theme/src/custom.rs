@@ -205,18 +205,19 @@ pub fn presets() -> Vec<ThemePreset> {
             [0x111111, 0xFFFFFF, 0x111111],
             [0xFAFAFA, 0x0A0A0A, 0xFAFAFA],
         ),
-        // Saturated crimson against stark neutrals. Cover-story red.
+        // The default crimson pushed onto warm paper neutrals — a postage
+        // stamp pressed onto the page.
         derived(
-            "Scarlet",
-            [0xDC2626, 0xFFFFFF, 0x111111],
-            [0xF43F5E, 0x0B0608, 0xF5E9EC],
+            "Stamp",
+            [0xD7263D, 0xFAF8F5, 0x26221C],
+            [0xE4485C, 0x171512, 0xEDE9E2],
         ),
-        // Hot green on near-black; the light side keeps the ink dark and
-        // the green loud. Phosphor terminal by night, fashion spread by day.
+        // Loud cobalt on cool paper; blueprint by day, photocopier glow
+        // by night.
         derived(
-            "Neon",
-            [0x15803D, 0xFCFCF9, 0x0E1A12],
-            [0x22C55E, 0x050807, 0xE8F5EC],
+            "Scan",
+            [0x2244CC, 0xF7F8FC, 0x14182B],
+            [0x4D6FFF, 0x05070F, 0xE6EAF7],
         ),
     ]
 }

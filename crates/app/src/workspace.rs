@@ -168,10 +168,10 @@ impl Workspace {
         let key_missing = muse_api::resolve_api_key().is_none();
 
         let custom_fields = [
-            cx.new(|cx| TextField::new(window, cx, "#B86450")),
+            cx.new(|cx| TextField::new(window, cx, "#D7263D")),
             cx.new(|cx| TextField::new(window, cx, "#FAF8F5")),
             cx.new(|cx| TextField::new(window, cx, "#26221C")),
-            cx.new(|cx| TextField::new(window, cx, "#E0907C")),
+            cx.new(|cx| TextField::new(window, cx, "#E4485C")),
             cx.new(|cx| TextField::new(window, cx, "#171512")),
             cx.new(|cx| TextField::new(window, cx, "#EDE9E2")),
         ];
